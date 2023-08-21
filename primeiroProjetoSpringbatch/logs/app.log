@@ -1,0 +1,14 @@
+2023-08-21 08:59:04,532 INFO b.e.u.p.PrimeiroProjetoSpringbatchApplication [main] Starting PrimeiroProjetoSpringbatchApplication using Java 17.0.7 on ubuntu-renan with PID 67837 (/home/renan/Projetos/curso-spring-batch/primeiroProjetoSpringbatch/target/classes started by renan in /home/renan/Projetos/curso-spring-batch/primeiroProjetoSpringbatch)
+2023-08-21 08:59:04,536 INFO b.e.u.p.PrimeiroProjetoSpringbatchApplication [main] No active profile set, falling back to 1 default profile: "default"
+2023-08-21 08:59:05,616 INFO o.s.c.a.ConfigurationClassEnhancer [main] @Bean method PropsConfig.config is non-static and returns an object assignable to Spring's BeanFactoryPostProcessor interface. This will result in a failure to process annotations such as @Autowired, @Resource and @PostConstruct within the method's declaring @Configuration class. Add the 'static' modifier to this method to avoid these container lifecycle issues; see @Bean javadoc for complete details.
+2023-08-21 08:59:06,298 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Starting...
+2023-08-21 08:59:07,405 INFO c.z.h.HikariDataSource [main] HikariPool-1 - Start completed.
+2023-08-21 08:59:08,743 INFO o.s.b.c.r.s.JobRepositoryFactoryBean [main] No database type set, using meta data indicating: MYSQL
+2023-08-21 08:59:09,369 INFO o.s.b.c.l.s.SimpleJobLauncher [main] No TaskExecutor has been set, defaulting to synchronous executor.
+2023-08-21 08:59:09,709 INFO b.e.u.p.PrimeiroProjetoSpringbatchApplication [main] Started PrimeiroProjetoSpringbatchApplication in 8.238 seconds (JVM running for 12.863)
+2023-08-21 08:59:10,467 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=imprimeOlaJob]] launched with the following parameters: [{run.id=3}]
+2023-08-21 08:59:11,124 INFO o.s.b.c.j.SimpleStepHandler [main] Executing step: [imprimeOlaStep]
+2023-08-21 08:59:16,854 INFO o.s.b.c.s.AbstractStep [main] Step: [imprimeOlaStep] executed in 5s730ms
+2023-08-21 08:59:17,727 INFO o.s.b.c.l.s.SimpleJobLauncher [main] Job: [SimpleJob: [name=imprimeOlaJob]] completed with the following parameters: [{run.id=3}] and the following status: [COMPLETED] in 6s788ms
+2023-08-21 08:59:17,888 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown initiated...
+2023-08-21 08:59:18,235 INFO c.z.h.HikariDataSource [SpringApplicationShutdownHook] HikariPool-1 - Shutdown completed.
