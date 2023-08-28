@@ -12,17 +12,16 @@ import org.springframework.core.io.Resource;
 @Configuration
 public class ArquivoMultiplosFormatosReaderConfig {
 
-	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Bean
 	@StepScope
 	public FlatFileItemReader arquivoMultiplosFormatosItemReader(
-			@Value("#{jobParameters['arquivoClientes']}") Resource arquivoClientes, 
-			LineMapper lineMapper) {
+			@Value("#{jobParameters['arquivoClientes']}") Resource arquivoClientes, LineMapper lineMapper ) {
 		return new FlatFileItemReaderBuilder()
 				.name("arquivoMultiplosFormatosItemReader")
 				.resource(arquivoClientes)
-				.lineMapper(lineMapper).build();
-
+				.lineMapper(lineMapper)
+				.build();
 	}
 
 }

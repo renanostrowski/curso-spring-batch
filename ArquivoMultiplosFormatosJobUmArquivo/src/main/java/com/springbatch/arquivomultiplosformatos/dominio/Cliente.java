@@ -54,7 +54,7 @@ public class Cliente {
 	public String toString() {
 		return "Cliente{" + "nome='" + nome + "'" + ", sobrenome ='" + sobrenome + "'" + ", idade='" + idade + "'"
 				+ ", email='" + email + "'" +
-				(transacoes.isEmpty() ? "" : ", transacoes=" + transacoes)
+				(transacoes.isEmpty() ? "" : "transações= " + transacoes)
 				+ '}';
 	}
 }

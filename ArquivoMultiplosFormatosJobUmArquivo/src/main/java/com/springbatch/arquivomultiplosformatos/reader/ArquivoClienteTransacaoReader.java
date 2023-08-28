@@ -3,18 +3,19 @@ package com.springbatch.arquivomultiplosformatos.reader;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemStreamException;
 import org.springframework.batch.item.ItemStreamReader;
-import org.springframework.batch.item.file.FlatFileItemReader;
-import org.springframework.batch.item.file.ResourceAwareItemReaderItemStream;
-import org.springframework.core.io.Resource;
+import org.springframework.batch.item.NonTransientResourceException;
+import org.springframework.batch.item.ParseException;
+import org.springframework.batch.item.UnexpectedInputException;
 
 import com.springbatch.arquivomultiplosformatos.dominio.Cliente;
 import com.springbatch.arquivomultiplosformatos.dominio.Transacao;
 
-public class ArquivoClienteTransacaoReader implements ItemStreamReader<Cliente>, ResourceAwareItemReaderItemStream<Cliente> {
-	private Object objAtual;
-	private FlatFileItemReader<Object> delegate;
+public class ArquivoClienteTransacaoReader implements ItemStreamReader<Cliente>{
+
+	private Object objetoAtual;
+	private ItemStreamReader<Object> delegate;
 	
-	public ArquivoClienteTransacaoReader(FlatFileItemReader<Object> delegate) {
+	public ArquivoClienteTransacaoReader(ItemStreamReader<Object> delegate) {
 		this.delegate = delegate;
 	}
 	
@@ -35,27 +36,22 @@ public class ArquivoClienteTransacaoReader implements ItemStreamReader<Cliente>,
 
 	@Override
 	public Cliente read() throws Exception {
-		if (objAtual == null)
-			objAtual = delegate.read();
+		if(objetoAtual == null)
+			objetoAtual = delegate.read();
 			
-		Cliente cliente = (Cliente) objAtual;
-		objAtual = null;
+		Cliente cliente = (Cliente) objetoAtual;
 		
-		if (cliente != null) {
-			while (peek() instanceof Transacao)
-				cliente.getTransacoes().add((Transacao) objAtual);
+		if(cliente != null) {
+			while (peek() instanceof Transacao) {
+				cliente.getTransacoes().add((Transacao) objetoAtual);
+			}
 		}
 		return cliente;
 	}
 
 	private Object peek() throws Exception {
-		objAtual = delegate.read();
-		return objAtual;
-	}
-
-	@Override
-	public void setResource(Resource resource) {
-		delegate.setResource(resource);
+		objetoAtual = delegate.read();
+		return objetoAtual;
 	}
 
 }
